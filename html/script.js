@@ -111,7 +111,7 @@ navigator.mediaDevices.getUserMedia({ audio: true })
 // Configura o WebSocket e inicia o reconhecimento de fala e o visualizador de áudio
 startButton.onclick = () => {
     //ws = new WebSocket('ws://localhost:8080/ws');    
-    ws = new WebSocket('wss://18.118.104.227:8080/ws');
+    ws = new WebSocket('wss://18.118.104.227:8090/ws');
     ws.onopen = () => {
         startRecognition();       
     };
