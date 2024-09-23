@@ -1,8 +1,15 @@
-# Usando uma imagem base do Nginx
+# Usar a imagem base do Nginx
 FROM nginx:latest
+
+# Copia os arquivos do certificado para o contêiner
+COPY certificados/server.crt /etc/ssl/certs/server.crt
+COPY certificados/server.key /etc/ssl/private/server.key
 
 # Copia os arquivos HTML para o diretório padrão do Nginx
 COPY html/ /usr/share/nginx/html/
 
-# Expor a porta 80 para acessar o serviço
-EXPOSE 80
+# Copia o arquivo de configuração customizado para o Nginx
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+
+# Expor a porta 443 para HTTPS
+EXPOSE 443
